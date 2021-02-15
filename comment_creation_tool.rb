@@ -165,20 +165,22 @@ end
 file_read_path = ARGV[0]
 file_write_path = ARGV[1]
 
+all_is_ok = 'Congratulations all is good! 👍👍👍'
+test_source = 'test_source.rb'
+test_result = 'test_result.rb'
+
 if file_read_path && file_write_path
   CommentCreationTool.result file_read_path, file_write_path
   puts file_read_path
-  puts 'Congratulations all is good! 👍👍👍'
+  puts all_is_ok
   puts "see result in #{file_write_path}"
 elsif file_read_path.nil? && file_write_path.nil?
-  CommentCreationTool.result 'test_source.rb', 'test_result.rb'
-  puts "Congratulations all is good! 👍👍👍"
-  puts "\n################### Before ####################\n\n #{File.read 'test_source.rb'}"
-  puts "\n################### After #####################\n\n #{File.read 'test_result.rb'}"
+  CommentCreationTool.result test_source, test_result
+  puts all_is_ok
+  puts "\n################### Before ####################\n\n #{File.read test_source}"
+  puts "\n################### After #####################\n\n #{File.read test_result}"
 else
   puts "please fill in correctly as shown in the example run\
   `ruby ~/Directory/comment_creation_tool.rb ~/where/from/read/the/file\
   ~/where/to/write/the/file`"
 end
-
-
